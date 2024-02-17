@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= title
+  p= contact.text
+  div.contact-actions 
+    a(href=`/contacts/${contact.id}/delete`) Delete A Contact
+    | 
+    a(href=`/contacts/${contact.id}/edit`) Edit A Contact
