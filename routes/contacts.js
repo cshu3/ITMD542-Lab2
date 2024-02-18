@@ -5,7 +5,7 @@ const contactsRepo = require('../src/contactsFileRepository');
 /* GET contacts listing. */
 router.get('/', function(req, res, next) {
   const data = contactsRepo.findAll();
-  res.render('contacts', { title: 'Express Contacts', contacts: data } );
+  res.render('contacts', { title: 'IIT Contacts List', contacts: data } );
 });
 
 /* GET contacts add */
@@ -16,10 +16,16 @@ router.get('/add', function(req, res, next) {
 /* POST contacts add */
 router.post('/add', function(req, res, next) {
   //console.log(req.body);
-  if (req.body.contactText.trim() === '') {
-    res.render('contacts_add', {title: 'Add a Contact', msg: 'Contact text can not be empty!'});
+  if (!req.body.firstname || !req.body.lastname) {
+    res.render('contacts_add', {title: 'Add a Contact', msg: 'Firstname and lastname are required!'});
   } else {
-    contactsRepo.create({text: req.body.contactText.trim()});
+    contactsRepo.create({
+      firstname: req.body.firstname.trim(),
+      lastname: req.body.lastname.trim(),
+      email: req.body.email.trim(), 
+      notes: req.body.notes.trim(),
+      created_date: new Date()
+    });
     res.redirect('/contacts');
   }
 });
@@ -53,14 +59,23 @@ router.get('/:uuid/edit', function(req, res, next) {
   res.render('contacts_edit', { title: 'Edit Contact', contact: contact} );
 });
 
-/* POST contacts add */
+/* POST contacts edit */
 router.post('/:uuid/edit', function(req, res, next) {
+  const existingContact = contactsRepo.findById(req.params.uuid);
   //console.log(req.body);
-  if (req.body.contactText.trim() === '') {
+  if (req.body.firstname.trim() === ''||req.body.lastname.trim() === ''||req.body.email.trim() === ''||req.body.notes.trim() === '') {
     const contact = contactsRepo.findById(req.params.uuid);
-    res.render('contacts_edit', {title: 'Edit Contact', msg: 'Contact text can not be empty!', contact: contact});
+    res.render('contacts_edit', {title: 'Edit Contact', msg: 'All fields can not be empty!', contact: contact});
   } else {
-    const updatedContact = {id: req.params.uuid, text: req.body.contactText.trim()};
+    const updatedContact = {
+      id: req.params.uuid, 
+      firstname: req.body.firstname.trim(),
+      lastname: req.body.lastname.trim(),
+      email: req.body.email.trim(), 
+      notes: req.body.notes.trim(),
+      created_date: existingContact.created_date,
+      updated_date:new Date()
+    };
     contactsRepo.update(updatedContact);
     res.redirect('/contacts');
   }

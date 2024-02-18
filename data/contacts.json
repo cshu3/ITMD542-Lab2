@@ -1,1 +1,36 @@
-[["2da510ce-99df-4f49-a702-efe6c509ffd8",{"id":"2da510ce-99df-4f49-a702-efe6c509ffd8","text":"jiajin"}]]
+[
+    [
+        "31e7de7d-875e-4bcf-9b7c-3257126d552d",
+        {
+            "id": "31e7de7d-875e-4bcf-9b7c-3257126d552d",
+            "firstname": "James",
+            "lastname": "Smith",
+            "email": "James6@iit.edu",
+            "notes": "ELS",
+            "created_date": "2024-02-18T11:41:55.260Z"
+        }
+    ],
+    [
+        "3eddfba2-348f-4164-975f-00ce76da090b",
+        {
+            "id": "3eddfba2-348f-4164-975f-00ce76da090b",
+            "firstname": "Michael",
+            "lastname": "Johnson",
+            "email": "Michael2@iit.edu",
+            "notes": "Admissions Officer",
+            "created_date": "2024-02-18T11:45:53.465Z"
+        }
+    ],
+    [
+        "de56b13f-192b-40e6-be9c-b6d6a3ab8921",
+        {
+            "id": "de56b13f-192b-40e6-be9c-b6d6a3ab8921",
+            "firstname": "Jessica",
+            "lastname": "Miller",
+            "email": "Jessica2015@iit.edu",
+            "notes": "Department Chair",
+            "created_date": "2024-02-18T11:47:45.625Z",
+            "updated_date": "2024-02-18T11:48:36.729Z"
+        }
+    ]
+]

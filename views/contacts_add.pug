@@ -7,7 +7,18 @@ block content
   if msg 
     p(class='redtext')= msg
   form(method='POST' action='/contacts/add')
-    input(type='text' name='contactText')
+    .form-group
+      label(for='firstname') First Name
+      input#firstname.form-control(type='text', name='firstname', required='true', value=(contact ? contact.firstname : ''))
+    .form-group
+      label(for='lastname') Last Name
+      input#lastname.form-control(type='text', name='lastname', required='true', value=(contact ? contact.lastname : ''))
+    .form-group
+      label(for='email') Email
+      input#email.form-control(type='email', name='email', value=(contact ? contact.email : ''))
+    .form-group
+      label(for='notes') Notes
+      input#notes.form-control(type='text',name='notes', value=(contact ? contact.notes : ''))
     | 
     button(type='submit') Create A Contact 
     | 
